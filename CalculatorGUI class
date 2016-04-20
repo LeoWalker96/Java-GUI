@@ -1,0 +1,56 @@
+# Java-GUI
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+public class CalculatorGUI implements ActionListener {
+	private JFrame frame;
+	private JPanel panel;
+	private JLabel label;
+	private JLabel output;
+	private JTextField textfield1;
+	private JTextField textfield2;
+	private JButton button;
+	
+	public CalculatorGUI() {
+		frame = new JFrame("Calculator");
+		frame.setVisible(true);
+		frame.setSize(320, 100);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		panel = new JPanel();
+		panel.setBackground(Color.CYAN);
+		
+		label = new JLabel();
+		label.setText("Enter Number");
+		output = new JLabel();
+		output.setText("---------");
+		
+		textfield1 = new JTextField(5);
+		textfield2 = new JTextField(5);
+		
+		button = new JButton("Calculate");
+		button.addActionListener(this);
+		
+		panel.add(label);
+		panel.add(textfield1);
+		panel.add(textfield2);
+		panel.add(button);
+		panel.add(output);
+		
+		frame.add(panel);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		double num1 = Double.parseDouble(textfield1.getText());
+		double num2 = Double.parseDouble(textfield2.getText());
+		double sum = num1 + num2;
+		output.setText(String.valueOf(sum));
+	}
+
+}
